@@ -11,7 +11,12 @@ const axiosConfig = (user) => {
 // GET REPOSITORIES
 const getAll = async (user) => {
   return axiosConfig(user).then((response) => {
-    return response
+    return {
+      name: response.full_name,
+      url: response.html_url,
+      avatar: response.owner,
+      description: response.description,
+    }
   })
 };
 
