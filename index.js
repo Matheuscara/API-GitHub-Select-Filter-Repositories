@@ -7,7 +7,7 @@ const cors = require('cors');
 const repositoriesController = require('./controllers/repositoriesController.js')
 
 // Configurate Server
-const DOOR = 3000;
+const DOOR = process.env.PORT || 3000;
 
 const app = express();
 app.use(cors())
