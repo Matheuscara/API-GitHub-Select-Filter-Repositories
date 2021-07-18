@@ -1,5 +1,4 @@
 const moment = require('moment');
-
 repositoresModels = require('../models/repositoresModels')
 formatLanguageFilter = require('../Util/formatLanguageFilter');
 
@@ -11,29 +10,41 @@ const getRepositories = async (req, res) => {
     index
   } = req.params;
 
-  const repositories = await repositoresModels.getAll(user);
+  // REQUEST ALL REPOSITORIES
+  let repositories = await repositoresModels.getAll(user);
 
-  if (language && order) {
+  repositories.map((element) => {
+    console.log(element.language)
+  })
+
+  // FILTER LANGUAGE SELECTED
+  if (language) {
     language = formatLanguageFilter(language);
-
-    const repositoriesFilter = repositories.filter(
-      (repositorie) => repositorie.language === language
+    repositories = repositories.filter(
+      (repositorie) => repositorie.language === language 
     );
-
-    const diferent = repositoriesFilter.sort((x, y) => {
-      const A = moment(x.created)
-      const B = moment(y.created)
-      return B.isBefore(A) ? 1 : -1 
-    });
-
-    if(index) {
-      return index < diferent.length ? res.status(200).json(diferent[index]) : res.status(400).json({"message": "Repositorio Inexistente"})
-    }
-
-    return res.status(200).json(diferent[0])
   }
 
-  return repositories || user ? res.status(200).json(repositories) : res.status(400).json({"message": "Valores Invalidos ou Inexistentes"})
+  // ADD ORDER GROWING
+  if (order) {
+    repositories = repositories.sort((x, y) => {
+      const A = moment(x.created)
+      const B = moment(y.created)
+      return B.isBefore(A) ? 1 : -1
+    });
+  }
+
+  // INDEX REPOSITORIE SELECTED
+  if (index) {
+    return index < diferent.length ? res.status(200).json(diferent[index]) : res.status(400).json({
+      "message": "Repositorio Inexistente"
+    })
+  }
+
+  // RETURN REPOSITORIES
+  return repositories || user ? res.status(200).json(repositories) : res.status(400).json({
+    "message": "Valores Invalidos ou Inexistentes"
+  })
 
 };
 

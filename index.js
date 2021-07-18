@@ -13,8 +13,10 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json());
 
+// ROUTE TO GET REPOSITORES
 app.use('/repositories', repositoriesController);
 
+// LSITEN DOOR
 app.listen(DOOR, () => {
   console.log(`Server Rodando ${DOOR} `)
 })
