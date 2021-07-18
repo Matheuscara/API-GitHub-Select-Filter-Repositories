@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // Controller
-const repositoriesController = require('./controllers/repositoriesController.ts')
+const repositoriesController = require('./controllers/repositoriesController.js')
 
 // Configurate Server
 const DOOR = process.env.PORT || 3000;
