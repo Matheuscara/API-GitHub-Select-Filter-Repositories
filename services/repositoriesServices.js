@@ -36,7 +36,7 @@ const getRepositories = async (req, res) => {
 
   // INDEX REPOSITORIE SELECTED
   if (index) {
-    return index < diferent.length ? res.status(200).json(diferent[index]) : res.status(400).json({
+    return index < repositories.length ? res.status(200).json(repositories[index]) : res.status(400).json({
       "message": "Repositorio Inexistente"
     })
   }
