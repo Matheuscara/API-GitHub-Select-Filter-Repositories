@@ -11,12 +11,16 @@ const axiosConfig = (user) => {
 // GET REPOSITORIES
 const getAll = async (user) => {
   return axiosConfig(user).then((response) => {
-    return {
-      name: response.full_name,
-      url: response.html_url,
-      avatar: response.owner,
-      description: response.description,
-    }
+    return response.data.map((repo) => {
+      return {
+        name: repo.full_name,
+        url: repo.html_url,
+        avatar: repo.owner.avatar_url,
+        description: repo.description,
+        language: repo.language,
+        created: repo.created_at
+      }
+    }) 
   })
 };
 

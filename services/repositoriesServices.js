@@ -15,13 +15,13 @@ const getRepositories = async (req, res) => {
   if (language && order) {
     language = formatLanguageFilter(language);
 
-    const repositoriesFilter = repositories.data.filter(
+    const repositoriesFilter = repositories.filter(
       (repositorie) => repositorie.language === language
     );
 
     const diferent = repositoriesFilter.sort((x, y) => {
-      const A = moment(x.created_at)
-      const B = moment(y.created_at)
+      const A = moment(x.created)
+      const B = moment(y.created)
       return B.isBefore(A) ? 1 : -1 
     });
 
