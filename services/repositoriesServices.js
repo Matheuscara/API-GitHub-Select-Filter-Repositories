@@ -7,7 +7,8 @@ const getRepositories = async (req, res) => {
   let {
     user,
     language,
-    order
+    order,
+    index
   } = req.params;
 
   const repositories = await repositoresModels.getAll(user);
@@ -25,8 +26,15 @@ const getRepositories = async (req, res) => {
       return B.isBefore(A) ? 1 : -1 
     });
 
-    return res.status(200).json(diferent)
+    if(index) {
+      return index < diferent.length ? res.status(200).json(diferent[index]) : res.status(400).json({"message": "Repositorio Inexistente"})
+    }
+
+    return res.status(200).json(diferent[0])
   }
+
+  return repositories || user ? res.status(200).json(repositories) : res.status(400).json({"message": "Valores Invalidos ou Inexistentes"})
+
 };
 
 module.exports = {

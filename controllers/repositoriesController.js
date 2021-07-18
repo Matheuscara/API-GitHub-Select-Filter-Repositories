@@ -8,7 +8,7 @@ const repositoriesServices = require('../services/repositoriesServices.js')
 const route = Router();
 
 // Get All Posts
-route.get('/:user/:language?/:order?', repositoriesServices.getRepositories );
+route.get('/:user/:language?/:order?/:index?', repositoriesServices.getRepositories );
 
 // Export Router
 module.exports = route;
