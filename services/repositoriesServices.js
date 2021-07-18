@@ -13,10 +13,6 @@ const getRepositories = async (req, res) => {
   // REQUEST ALL REPOSITORIES
   let repositories = await repositoresModels.getAll(user);
 
-  repositories.map((element) => {
-    console.log(element.language)
-  })
-
   // FILTER LANGUAGE SELECTED
   if (language) {
     language = formatLanguageFilter(language);
