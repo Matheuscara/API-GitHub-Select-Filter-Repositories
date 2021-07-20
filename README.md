@@ -1,4 +1,4 @@
-﻿# Matheus Dias - Challenge Take.Blip
+﻿# API-GitHub-Select-Filter-Repositories
 
 > Realizei uma API simples que busca dados do usuario do github selecionado e retorna como vc desejar.
 
