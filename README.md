@@ -1,12 +1,13 @@
-﻿# Matheus Dias  - Desafio Take.Blip - Back-End 
-> Realizei um CRUD simples para realização do meu desafio.
+﻿# Matheus Dias - Challenge Take.Blip
+
+> Realizei uma API simples que busca dados do usuario do github selecionado e retorna como vc desejar.
 
 ## Stacks de Desenvolvimento
 
-* TypeScript
-* NodeJS
-* Express
-* Heroku
+- Javascript
+- NodeJS
+- Express
+- Heroku
 
 ## Instalação
 
@@ -16,14 +17,28 @@ OS X Linux X Windows:
 npm install
 ```
 
-## Exemplo de uso
+## Modo de Uso
 
-Este CRUD simples foi desenvolvido para o test e somente nele é o caso esperado.
+Está api foi desenvolvida e já foi realizado o deploy.
 
-## Contribuir
+- Base Url : https://github-order.herokuapp.com/repositories
 
-1. Faça o _fork_ do projeto (https://github.com/Matheuscara/Portfolio-BackEnd)
-2. Crie uma _branch_ para sua modificação (`git checkout -b Branch`)
-3. Faça o _commit_ (`git commit -am 'Add .'`)
-4. _Push_ (`git push origin Branch`)
-5. Crie um novo _Pull Request_
+Um dos metodos de uso é
+
+#Retornando todos os repositorios disponiveis do usuario selecionado:
+    
+    /{:userGitHub:}/
+
+#Um filtro da sua linguagem selecionada:
+
+    /{:userGitHub:}/{:linguagem:}
+
+#Um filtro retornando de ordem crescente de acordo com a data criada dos repositorios selecionados:
+
+    /{:userGitHub:}/{:linguagem:}/order/
+
+#Retorna o elemento selecionado de acordo com o index do Array:
+
+    /{:userGitHub:}/{:linguagem:}/order/{index}
+
+
